@@ -5,13 +5,13 @@ const express = require('express')
 
 
 const app = express()
-const url ="https://covenantuniversity.edu.ng"
+const url ="https://news.ycombinator.com"
 axios(url)
 .then(response=>{
     const html=response.data
     const $ = cheerio.load(html)
     const articles=[]
-    $(".page-content",html).each(function(){
+    $(".title",html).each(function(){
         const title=$(this).text()
        const url=  $(this).find('a').attr('href')
        articles.push({
